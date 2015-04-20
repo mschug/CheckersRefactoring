@@ -1,18 +1,14 @@
 /*
  * CheckerGUI.java
  * 
- * The actual board.
+ * Refactoring v.01
  *
- * Created on January 25, 2002, 2:34 PM
+ * @author mss9627
+ * @author trh8614
+ * @author aac6012
+ * @author thn1069
+ * @author edf7470
  * 
- * Version
- * $Id: CheckerGUI.java,v 1.1 2002/10/22 21:12:52 se362 Exp $
- * 
- * Revisions
- * $Log: CheckerGUI.java,v $
- * Revision 1.1  2002/10/22 21:12:52  se362
- * Initial creation of case study
- *
  */
 
 import javax.swing.*;
@@ -20,12 +16,6 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
 import java.net.*;
-
-/**
- *
- * @author
- * @version 
- */
 
 public class CheckerGUI extends JFrame implements ActionListener{
     
