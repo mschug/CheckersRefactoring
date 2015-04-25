@@ -13,7 +13,6 @@ package Checkers.engine;
  *
  */
 
-import Checkers.Driver;
 import Checkers.gamecomponents.LocalPlayer;
 import Checkers.gamecomponents.Player;
 import Checkers.gamecomponents.Board;

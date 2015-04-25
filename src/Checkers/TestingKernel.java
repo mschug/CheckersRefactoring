@@ -16,6 +16,7 @@ package Checkers;
  */
                                       
 // Not all of these are probably necessary.
+import Checkers.engine.Driver;
 import Checkers.engine.Facade;
 import Checkers.gamecomponents.Player;
 import Checkers.gamecomponents.Board;

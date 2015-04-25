@@ -13,7 +13,7 @@ package Checkers.gamecomponents;
  *
  */
 
-import Checkers.Driver;
+import Checkers.engine.Driver;
 import Checkers.gamecomponents.Player;
 import Checkers.engine.Rules;
 import java.awt.*;

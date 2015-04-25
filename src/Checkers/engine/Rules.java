@@ -14,7 +14,6 @@ package Checkers.engine;
  */
 
 import Checkers.gamecomponents.Board;
-import Checkers.Driver;
 import Checkers.gamecomponents.Move;
 import Checkers.gamecomponents.Piece;
 import Checkers.gamecomponents.Player;
