@@ -1,3 +1,5 @@
+package Checkers;
+
 /**
  * LocalPlayer.java
  *
@@ -11,6 +13,7 @@
  *
  */
 
+import Checkers.rules.Rules;
 import java.awt.*;
 import javax.swing.*;
 

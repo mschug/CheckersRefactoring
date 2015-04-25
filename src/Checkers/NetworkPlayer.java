@@ -1,3 +1,5 @@
+package Checkers;
+
 /*
  * NetworkPlayer.java
  *
@@ -11,6 +13,7 @@
  *
  */
 
+import Checkers.rules.Rules;
 import java.net.*;
 import java.io.*;
 import javax.swing.JOptionPane;
