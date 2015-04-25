@@ -1,4 +1,4 @@
-package Checkers;
+package Checkers.engine;
 
 /**
  * Notifier.java

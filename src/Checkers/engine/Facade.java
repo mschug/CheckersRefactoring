@@ -1,4 +1,4 @@
-package Checkers;
+package Checkers.engine;
 
 /**
  * Facade.java
@@ -13,6 +13,10 @@ package Checkers;
  *
  */
 
+import Checkers.Driver;
+import Checkers.gamecomponents.LocalPlayer;
+import Checkers.gamecomponents.Player;
+import Checkers.gamecomponents.Board;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

@@ -1,5 +1,7 @@
 package Checkers;
 
+import Checkers.settings.Firstscreen;
+
 /*
 
  * PlayCheckers.java

@@ -1,4 +1,4 @@
-package Checkers;
+package Checkers.gamecomponents;
 
 /*
  * CheckerGUI.java
@@ -13,6 +13,9 @@ package Checkers;
  * 
  */
 
+import Checkers.engine.Facade;
+import Checkers.engine.Facade;
+import Checkers.gamecomponents.Board;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
