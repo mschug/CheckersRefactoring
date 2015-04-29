@@ -1,3 +1,7 @@
+package Checkers.engine;
+
+import Checkers.engine.Notifier;
+
 /**
  * Timer.java
  *

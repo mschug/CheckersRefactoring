@@ -1,3 +1,5 @@
+package Checkers.engine;
+
 /**
  * Facade.java
  *
@@ -11,6 +13,9 @@
  *
  */
 
+import Checkers.gamecomponents.LocalPlayer;
+import Checkers.gamecomponents.Player;
+import Checkers.gamecomponents.Board;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

@@ -1,3 +1,5 @@
+package Checkers.engine;
+
 /**
  * Rules.java
  *
@@ -11,6 +13,11 @@
  *
  */
 
+import Checkers.gamecomponents.Board;
+import Checkers.gamecomponents.Move;
+import Checkers.gamecomponents.Piece;
+import Checkers.gamecomponents.Player;
+import Checkers.gamecomponents.SinglePiece;
 import java.util.*;
 import java.awt.*;
 

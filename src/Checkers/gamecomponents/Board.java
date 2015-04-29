@@ -1,3 +1,5 @@
+package Checkers.gamecomponents;
+
 /**
  * Board.java
  *

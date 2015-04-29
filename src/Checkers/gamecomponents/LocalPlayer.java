@@ -1,3 +1,5 @@
+package Checkers.gamecomponents;
+
 /**
  * LocalPlayer.java
  *
@@ -11,6 +13,9 @@
  *
  */
 
+import Checkers.engine.Driver;
+import Checkers.gamecomponents.Player;
+import Checkers.engine.Rules;
 import java.awt.*;
 import javax.swing.*;
 
