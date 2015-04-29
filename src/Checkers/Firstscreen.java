@@ -1,4 +1,4 @@
-package Checkers.settings;
+package Checkers;
 
 /*
  * Firstscreen.java
@@ -12,7 +12,6 @@ package Checkers.settings;
  *   Initial creation of case study
  *
  */
-import Checkers.engine.Facade;
 import java.net.*;
 import javax.swing.*;
 import java.awt.event.*;

@@ -1,4 +1,4 @@
-package Checkers.gamecomponents.network;
+package Checkers;
 
 /**
  * NetworkMove.java
@@ -13,7 +13,6 @@ package Checkers.gamecomponents.network;
  *
  */
 
-import Checkers.gamecomponents.Move;
 import java.util.*;
 import java.io.*;
 

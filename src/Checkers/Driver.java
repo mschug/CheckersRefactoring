@@ -13,14 +13,7 @@ package Checkers;
  *
  */
 
-import Checkers.engine.Notifier;
-import Checkers.engine.Facade;
-import Checkers.engine.Timer;
-import Checkers.gamecomponents.network.NetworkPlayer;
-import Checkers.gamecomponents.LocalPlayer;
-import Checkers.gamecomponents.Player;
-import Checkers.gamecomponents.Board;
-import Checkers.engine.Rules;
+import Checkers.rules.Rules;
 import java.awt.*;
 import java.net.*;
 import javax.swing.*;

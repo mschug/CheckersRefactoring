@@ -1,4 +1,4 @@
-package Checkers.gamecomponents;
+package Checkers;
 
 /**
  * Player.java
@@ -13,8 +13,7 @@ package Checkers.gamecomponents;
  *
  */
 
-import Checkers.Driver;
-import Checkers.engine.Rules;
+import Checkers.rules.Rules;
 import java.awt.*;
 		   
 /**

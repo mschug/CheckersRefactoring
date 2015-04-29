@@ -1,4 +1,4 @@
-package Checkers.gamecomponents;
+package Checkers;
 
 /**
  * KingPiece.java

@@ -1,4 +1,4 @@
-package Checkers.settings;
+package Checkers;
 
 /*
  * Secondscreen.java
@@ -13,8 +13,6 @@ package Checkers.settings;
  *
  */
 
-import Checkers.engine.Facade;
-import Checkers.gamecomponents.CheckerGUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

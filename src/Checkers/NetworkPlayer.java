@@ -1,4 +1,4 @@
-package Checkers.gamecomponents.network;
+package Checkers;
 
 /*
  * NetworkPlayer.java
@@ -13,10 +13,7 @@ package Checkers.gamecomponents.network;
  *
  */
 
-import Checkers.Driver;
-import Checkers.gamecomponents.Player;
-import Checkers.gamecomponents.Move;
-import Checkers.engine.Rules;
+import Checkers.rules.Rules;
 import java.net.*;
 import java.io.*;
 import javax.swing.JOptionPane;
