@@ -1,5 +1,3 @@
-package Checkers;
-
 /**
  * Player.java
  *
@@ -13,7 +11,6 @@ package Checkers;
  *
  */
 
-import Checkers.rules.Rules;
 import java.awt.*;
 		   
 /**

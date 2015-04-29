@@ -1,5 +1,3 @@
-package Checkers.rules;
-
 /**
  * Rules.java
  *
@@ -13,12 +11,6 @@ package Checkers.rules;
  *
  */
 
-import Checkers.Board;
-import Checkers.Driver;
-import Checkers.Move;
-import Checkers.Piece;
-import Checkers.Player;
-import Checkers.SinglePiece;
 import java.util.*;
 import java.awt.*;
 

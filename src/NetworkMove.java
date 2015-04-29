@@ -1,5 +1,3 @@
-package Checkers;
-
 /**
  * NetworkMove.java
  *

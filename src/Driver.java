@@ -1,5 +1,3 @@
-package Checkers;
-
 /**
  * Driver.java
  *
@@ -13,7 +11,6 @@ package Checkers;
  *
  */
 
-import Checkers.rules.Rules;
 import java.awt.*;
 import java.net.*;
 import javax.swing.*;

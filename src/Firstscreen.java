@@ -1,5 +1,3 @@
-package Checkers;
-
 /*
  * Firstscreen.java
  *
