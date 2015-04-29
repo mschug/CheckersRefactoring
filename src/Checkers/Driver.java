@@ -1,4 +1,4 @@
-package Checkers.engine;
+package Checkers;
 
 /**
  * Driver.java

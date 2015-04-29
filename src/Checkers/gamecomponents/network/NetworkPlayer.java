@@ -13,7 +13,7 @@ package Checkers.gamecomponents.network;
  *
  */
 
-import Checkers.engine.Driver;
+import Checkers.Driver;
 import Checkers.gamecomponents.Player;
 import Checkers.gamecomponents.Move;
 import Checkers.engine.Rules;
