@@ -15,9 +15,6 @@ import java.util.ArrayList;
  * @author mss9627
  */
 public class ScoreboardController {
-    public static final boolean WIN = true;
-    public static final boolean LOSE = false;
-    public static final boolean DRAW = false;
     private BufferedReader fileIn;
     private BufferedWriter fileOut;
     private ArrayList<PlayerScore> players;
@@ -52,16 +49,17 @@ public class ScoreboardController {
     private void parseLine( String line ){
         String[] params = line.split(",");
         
-        if( params.length != 3 ){
+        if( params.length != 4 ){
             System.out.println( "Input line was invalid." );
             System.out.println( "Line \"" + line + "\" will be erased upon the next save.");
         }
         
         String name = params[0];
         int wins = tryParse( params[1] );
-        int games = tryParse( params[2] );
+        int draws = tryParse( params[2] );
+        int games = tryParse( params[3] );
         
-        PlayerScore p = new PlayerScore(name, wins, games);
+        PlayerScore p = new PlayerScore(name, wins, draws, games);
         players.add( p );
     }
     
@@ -77,6 +75,51 @@ public class ScoreboardController {
         } catch( NumberFormatException e ){
             return 0;
         }
+    }
+    
+    /**
+     * Called once a game is completed.
+     * Updates the scores of both players and saves the updated scoreboard.
+     * 
+     * @param playerOne The name of the first player.
+     * @param playerTwo The name of the second player.
+     * @param winner    1 for a Player 1 win, 2 for a Player 2 win, or 0 for a draw.
+     */
+    public void updateScores( String playerOne, String playerTwo, int winner ){
+        PlayerScore p1 = null;
+        PlayerScore p2 = null;
+        for( PlayerScore p : players ){
+            if( p.getName().equals( playerOne ) ){
+                p1 = p;
+            } else if( p.getName().equals( playerTwo ) ){
+                p2 = p;
+            }
+            if( p1 != null && p2 != null ){
+                break;
+            }
+        }
+        
+        if( p1 == null ){
+            p1 = new PlayerScore( playerOne, 0, 0, 0 );
+            players.add( p1 );
+        }
+        if( p2 == null ){
+            p2 = new PlayerScore( playerTwo, 0, 0, 0 );
+            players.add( p2 );
+        }
+        
+        if( winner == 1 ){
+            p1.addGame( PlayerScore.WIN );
+            p2.addGame( PlayerScore.LOSS );
+        } else if( winner == 2 ){
+            p1.addGame( PlayerScore.LOSS );
+            p2.addGame( PlayerScore.WIN );
+        } else {
+            p1.addGame( PlayerScore.DRAW );
+            p2.addGame( PlayerScore.DRAW );
+        }
+        
+        saveFile();
     }
     
     /**
