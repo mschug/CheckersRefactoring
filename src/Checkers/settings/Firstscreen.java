@@ -29,14 +29,18 @@ public class Firstscreen extends JFrame implements ActionListener{
 
     Facade theFacade;
     Secondscreen next;
+    
   
     // Variables declaration - do not modify
-    private BorderLayout borderLayout;
-    private JComponent modeSelection;
-    private JComponent gameOptions;
+    private String gameModeSelected;
+    
+    
     private JRadioButton LocalGameButton;
     private JRadioButton HostGameButton;
     private JRadioButton JoinGameButton;
+    private BorderLayout borderLayout;
+    private JComponent modeSelection; // first screen
+    private JComponent gameOptions; // second screen
     private JTextField IPField;
     private JLabel IPLabel;
     private JButton OKButton;
@@ -69,9 +73,11 @@ public class Firstscreen extends JFrame implements ActionListener{
      */
 
     private void initComponents() {
+        this.gameModeSelected = "local";
         this.borderLayout = new java.awt.BorderLayout();
         this.modeSelection = new javax.swing.JPanel(new java.awt.GridBagLayout());
         this.gameOptions = new javax.swing.JPanel(new java.awt.GridBagLayout());
+
         LocalGameButton = new JRadioButton();
         HostGameButton = new JRadioButton();
         JoinGameButton = new JRadioButton();
@@ -81,7 +87,6 @@ public class Firstscreen extends JFrame implements ActionListener{
         OKButton = new JButton();
         CancelButton = new JButton();
         IPExampleLabel = new JLabel();
-        
         
         
         this.setLayout(this.borderLayout);
@@ -176,7 +181,6 @@ public class Firstscreen extends JFrame implements ActionListener{
         gridBagConstraints1.insets = new Insets(30, 0, 0, 0);
         this.modeSelection.add(CancelButton, gridBagConstraints1);
         
-        
         // configuration
         this.getContentPane().add(this.modeSelection, BorderLayout.NORTH);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -186,6 +190,11 @@ public class Firstscreen extends JFrame implements ActionListener{
         });
     }
 
+    public String getSelectedMode(){
+        return this.gameModeSelected;
+    }
+    
+    
     /**
      *  
      * Exit the Application
