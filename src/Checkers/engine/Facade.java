@@ -16,6 +16,7 @@ package Checkers.engine;
 import Checkers.gamecomponents.LocalPlayer;
 import Checkers.gamecomponents.Player;
 import Checkers.gamecomponents.Board;
+import Checkers.engine.Timer;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -46,24 +47,18 @@ public class Facade extends Component {
     private int startSpace = 99; // Starting space for current move
     private int endSpace   = 99; // Ending space for current move
     
-    // The numbers associated with the timer
-    private int timer       = 999;
-    private int warningTime = 999;
-    
     private ActionListener actionListener;
       
     /**
      * Constructor for the facade.  Initializes the data members.
      * 
-     * @param newBoard  Board  object Facade will manipulate.
-     * @param newDriver Driver object that will communicate 
-     *                  with the Facade.
      */
-    public Facade( Board newBoard, Driver newDriver ){
+    public Facade(){
 	
-	theBoard = newBoard;
-	theDriver = newDriver;
-	
+	//theBoard = newBoard;
+	//theDriver = newDriver;
+        this.theBoard = new Board() ;
+	this.theDriver = new Driver(this.theBoard) ;
     }
     
     /**
@@ -77,10 +72,8 @@ public class Facade extends Component {
     public int whosTurn(){
 	
 	// Return the integer value of the activePlayer object
-	int turn;
-	turn = activePlayer.getNumber();
-	
-	return turn;
+
+	return activePlayer.getNumber() ;
     }
     
     /**
@@ -200,28 +193,7 @@ public class Facade extends Component {
      * @pre playerNum is a valid player number
      */
     public String getPlayerName( int playerNum ){
-	String retString = null;
-	
-	try{
-	    // Checks to see that playerNum is valid
-	    if( playerNum == 1 || playerNum == 2 ){
-		// checks both Player objects to see which one is 
-		// associated with the legal number returns the name of 
-                // the player asscociated with the number
-		if( activePlayer.getNumber() == playerNum ){
-		    retString = activePlayer.getName();
-		}else{
-		    retString = passivePlayer.getName();
-		}
-	    }		   
-	}catch( Exception e ){
-	    
-	    System.out.println( e.getMessage() );
-	  
-	    // If playerNum is illegal an exception will be thrown
-	}
-
-	return retString;
+	return this.theDriver.getPlayerName(playerNum) ;
     }
     
     /**
@@ -253,19 +225,10 @@ public class Facade extends Component {
      *
      * @pre   10 <= time <= 300.
      */
-    public void setTimer( int time, int warning ) throws Exception{
+    public void setTimer( int time, int warning ) throws Exception {
 	// Checks to see that time is in between the necessary frame
 	// Sets time(class variable) to time(param value)
-	if( ( time == -1 ) || ( ( time >= 10 || time <= 300 ) 
-				&& ( warning >= 10 || warning <= 300 ) ) ){
-	    
-	    timer       = time;
-	    warningTime = warning;
-	    theDriver.setTimer( time, warning );
-	
-	} else {
-	    throw new Exception( "Invalid timer settings" );
-	}	   
+	theDriver.setTimer( time, warning ) ;   
     }
     
     /**
@@ -327,15 +290,7 @@ public class Facade extends Component {
      * 
      */
     public int getTimer(){
-	int retval = 0;
-
-	// Makes sure there is a timer for this game
-	if( timer != 999 ){
-	    retval = timer;
-	}
-
-	// Returns the timer value (clas variable: time )
-	return retval;
+	return this.theDriver.getTimer() ;
     }
     
     /**
@@ -347,15 +302,7 @@ public class Facade extends Component {
      * @pre there has been a timer set for the current game  
      */
     public int getTimerWarning(){
-	int retval = -1;
-
-	// Makes sure there is a timer for this game
-	if( warningTime != 999 ){
-	    retval = warningTime;
-	}
-
-	// Returns the timer value (clas variable: warningTime )
-	return retval;
+        return this.theDriver.getTimerWarning() ;
     }
    
     /**

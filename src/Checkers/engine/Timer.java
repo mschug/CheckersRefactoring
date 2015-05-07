@@ -30,6 +30,9 @@ public class Timer extends Thread{
     private int      interval;
     private Notifier notifier;
     
+    private int timer       = 999;
+    private int warningTime = 999;
+    
     /**
      * This constaructor creates a new timer
      */    
@@ -77,6 +80,30 @@ public class Timer extends Thread{
      */
     public Notifier getNotifier(){
 	return notifier;
+    }
+    
+    public int getTimerWarning(){
+    	int retval = -1;
+
+	// Makes sure there is a timer for this game
+	if( warningTime != 999 ){
+	    retval = warningTime;
+	}
+
+	// Returns the timer value (clas variable: warningTime )
+	return retval;
+    }
+    
+    public int getTimer(){
+        int retval = 0;
+
+	// Makes sure there is a timer for this game
+	if( timer != 999 ){
+	    retval = timer;
+	}
+
+	// Returns the timer value (clas variable: time )
+	return retval;
     }
     
 }// Timer.java

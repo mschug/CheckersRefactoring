@@ -1,6 +1,6 @@
 package Checkers;
 
-import Checkers.engine.Driver;
+import Checkers.engine.Facade;
 import Checkers.settings.Firstscreen;
 
 /*
@@ -44,10 +44,7 @@ class PlayCheckers{
 	
     public static void main( String args[] ){
 	
-	
-	Driver theDriver = new Driver();
-	
-	Firstscreen first = new Firstscreen( theDriver.getFacade() );
+	Firstscreen first = new Firstscreen( new Facade() );
 	first.show();
 	
     }

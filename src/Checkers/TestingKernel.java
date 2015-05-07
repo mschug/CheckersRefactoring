@@ -61,14 +61,10 @@ public class TestingKernel extends java.lang.Object{
      *
      * @param args Array of command line arguments. 
      */
-    public static void main( String args[] ){
-        // Create the driver
-        Driver sampleDriver = new Driver();
-        
+    public static void main( String args[] ){        
         // Create the instance of the testing kernel.
-        // Pass to it as a parameter the driver you just made.
         // This is turn should begin execution of the program.
-        TestingKernel tester = new TestingKernel( sampleDriver );
+        TestingKernel tester = new TestingKernel();
     }
     
     /**
@@ -76,11 +72,10 @@ public class TestingKernel extends java.lang.Object{
      *
      * @param aFacade The facade to manipulate in this program.
      */
-    public TestingKernel( Driver aDriver ){
+    public TestingKernel(){
         //testFacade = aFacade;
-        theDriver  = aDriver;
-        testFacade = theDriver.getFacade();
-                
+        testFacade = new Facade() ;
+        
         // Call the needed methods.
         setBegin();
         beginTests();

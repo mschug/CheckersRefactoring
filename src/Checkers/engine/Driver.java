@@ -54,25 +54,11 @@ public class Driver {
      *
      * Create the driver, which in turn creates the rest of 
      * the system.
+     * @param board - The board to be passed on to rules.
      */
-    public Driver(){
-	// Create the board       
-	Board theBoard = new Board();
-	
+    public Driver(Board board){
 	// Create the rules passing in the board
-	theRules = new Rules( theBoard, this );
-	
-	// Create the facade and GUI
-	theFacade = new Facade( theBoard, this );	
-    }
-    
-    /**
-     * Return the facade the GUI will talk to.
-     *
-     * @return A facade to talk to the GUI.
-     */
-    public Facade getFacade(){
-	return theFacade;
+	theRules = new Rules( board, this );
     }
     
     /**
@@ -203,6 +189,28 @@ public class Driver {
 	}
     }
     
+    public String getPlayerName(int playerNum){
+        try{
+	    // Checks to see that playerNum is valid
+	    if( playerNum == 1 || playerNum == 2 ){
+		// checks both Player objects to see which one is 
+		// associated with the legal number returns the name of 
+                // the player asscociated with the number
+		if( activePlayer.getNumber() == playerNum ){
+		    return activePlayer.getName();
+		}else{
+		    return passivePlayer.getName();
+		}
+	    }		   
+	}catch( Exception e ){
+	    
+	    System.out.println( e.getMessage() );
+	  
+	    // If playerNum is illegal an exception will be thrown
+	}
+        return null ;
+    }
+    
     /** 
      * Set the color for a player using the passed in value.
      *
@@ -286,17 +294,22 @@ public class Driver {
      * @post The timer has been created and the appropriate time 
      *       restraints are in place
      */
-    public void setTimer( int time, int warning ){
+    public void setTimer( int time, int warning ) throws Exception{
    	// If values are negative, set runningTimer to false
 	// If they are positive values, create the Timer and 
 	// notifier with the times
-
-	if ( time < 0 ) {
-	    runningTimer = false;
-	} else {
-	    runningTimer = true;
-	    theTimer = new Timer();
-	}
+        if( ( time == -1 ) || ( ( time >= 10 || time <= 300 ) 
+				&& ( warning >= 10 || warning <= 300 ) ) ){
+            if ( time < 0 ) {
+                runningTimer = false;
+            } else {
+                runningTimer = true;
+                theTimer = new Timer();
+            }
+        }
+        else{ 
+            throw new Exception( "Invalid timer settings" );
+        }
         
     }
         
@@ -437,6 +450,17 @@ public class Driver {
 	}
 	
 	return timer;
+    }
+    
+    public int getTimerWarning(){
+        return this.theTimer.getTimerWarning() ;
+    }
+    
+    /* Refactored method, orginially in Facade.
+     * 
+     */
+    public int getTimer(){
+        return this.theTimer.getTimer() ;
     }
     
 }//Driver.java
