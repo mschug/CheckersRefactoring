@@ -33,12 +33,12 @@ public class RadioButtonsBuilder implements Builder{
         JoinGameButton.setActionCommand("join");
         JoinGameButton.setText("Join game");
         
-        
         // add all components in the Button group
         this.panel.add(LocalGameButton);
         this.panel.add(HostGameButton);
         this.panel.add(JoinGameButton);
     }
+    
     
     public Component getProduct(JFrame settingsscreen) {
         this.build(settingsscreen);
