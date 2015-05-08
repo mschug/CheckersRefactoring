@@ -2,6 +2,7 @@ package Checkers.engine;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -20,8 +21,10 @@ public class ScoreboardController {
     private ArrayList<PlayerScore> players;
     
     public ScoreboardController(){
+        String filePath = new File("").getAbsolutePath();
+        filePath = filePath.concat("/src/Checkers/engine/scoreboard.csv");
         try {
-            fileIn = new BufferedReader( new FileReader("scoreboard.csv") );
+            fileIn = new BufferedReader( new FileReader( filePath ) );
         } catch( FileNotFoundException e ){
             System.err.println( "Error opening file - creating empty score file." );
             try {

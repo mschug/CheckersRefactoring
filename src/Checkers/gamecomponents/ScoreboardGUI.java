@@ -32,7 +32,7 @@ public class ScoreboardGUI extends JFrame {
     
     private ScoreboardController controller;
     private final String[] columnNames = {
-        "Name", "Wins", "Draws", "Losses", "Score", "Score per Game"
+        "Name", "Wins", "Draws", "Losses", "Games", "Score", "Score per Game"
     };
     private JTable rankings;
     private final JScrollPane scroll;
@@ -40,6 +40,7 @@ public class ScoreboardGUI extends JFrame {
     private final JButton reset;
     
     public ScoreboardGUI( ScoreboardController sc ){
+        this.setTitle( "Scoreboard" );
         controller = sc;
         updateScoreboard( controller.getScores() );
         
@@ -62,10 +63,8 @@ public class ScoreboardGUI extends JFrame {
         });
         
         scroll = new JScrollPane( rankings );
-        rankings.setFillsViewportHeight( true );
         this.setLayout( new BorderLayout() );
-        this.add( rankings.getTableHeader(), BorderLayout.PAGE_START );
-        this.add( rankings, BorderLayout.CENTER );
+        this.add( scroll, BorderLayout.CENTER );
         
         JPanel menu = new JPanel();
         menu.setLayout( new FlowLayout() );
@@ -77,7 +76,7 @@ public class ScoreboardGUI extends JFrame {
     }   
     
     public void updateScoreboard( ArrayList<PlayerScore> players ){
-        String[][] params = new String[ players.size() ][6];
+        String[][] params = new String[ players.size() ][7];
         Collections.sort(players);
         
         int i = 0;
@@ -86,18 +85,21 @@ public class ScoreboardGUI extends JFrame {
             params[i][1] = Integer.toString( p.getWins() );
             params[i][2] = Integer.toString( p.getDraws() );
             params[i][3] = Integer.toString( p.getLosses() );
-            params[i][4] = Integer.toString( p.getScore() );
-            params[i][5] = Double.toString( p.getAverageScore() );
+            params[i][4] = Integer.toString( p.getGames() );
+            params[i][5] = Integer.toString( p.getScore() );
+            params[i][6] = String.format( "%1.2f", p.getAverageScore() );
             i++;
         }
         
         rankings = new JTable( params, columnNames );
-        rankings.setModel( new DefaultTableModel(){
+        rankings.getColumnModel().getColumn(0).setMinWidth(100);
+        rankings.getColumnModel().getColumn(6).setMinWidth(100);
+        /*  rankings.setModel( new DefaultTableModel(){
             @Override
             public boolean isCellEditable( int row, int column ){
                 return false;
             }
-        });
+        }); */
     }
     
 }

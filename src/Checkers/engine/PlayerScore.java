@@ -100,10 +100,10 @@ public class PlayerScore implements Comparable {
         if( p instanceof PlayerScore ){
             PlayerScore temp = (PlayerScore) p;
             
-            if( this.getAverageScore() > temp.getAverageScore() ) return 1;
-            else if( this.getAverageScore() < temp.getAverageScore() ) return -1;
-            else if( games > temp.getGames() ) return 1;
-            else if( games < temp.getGames() ) return -1;
+            if( this.getAverageScore() > temp.getAverageScore() ) return -1;
+            else if( this.getAverageScore() < temp.getAverageScore() ) return 1;
+            else if( games > temp.getGames() ) return -1;
+            else if( games < temp.getGames() ) return 1;
             
             return name.compareTo(temp.getName());
         }
