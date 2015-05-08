@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Checkers.builders;
+package Checkers.builders.settingsbuilder.firstscreen;
 
 import Checkers.settings.Settings;
 import java.awt.Component;

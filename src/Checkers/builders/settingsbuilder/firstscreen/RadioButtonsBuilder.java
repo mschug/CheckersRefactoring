@@ -1,7 +1,6 @@
 package Checkers.builders.settingsbuilder.firstscreen;
 
 import Checkers.builders.Builder;
-import Checkers.builders.GameModeListener;
 import Checkers.settings.Firstscreen;
 import Checkers.settings.Settings;
 import java.awt.Component;

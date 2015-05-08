@@ -13,8 +13,10 @@ package Checkers.settings;
  *
  */
 import Checkers.builders.settingsbuilder.firstscreen.IPFieldBuilder;
-import Checkers.builders.OKCancelBuilder;
+import Checkers.builders.settingsbuilder.OKCancelBuilder;
 import Checkers.builders.settingsbuilder.firstscreen.RadioButtonsBuilder;
+import Checkers.builders.settingsbuilder.secondscreen.PlayersInfoBuilder;
+import Checkers.builders.settingsbuilder.secondscreen.TimeSettingsBuilder;
 import Checkers.engine.Facade;
 import java.net.*;
 import javax.swing.*;
@@ -80,26 +82,51 @@ public class Settings extends JFrame implements ActionListener{
         
         // create radio buttons for game mode selection
         JPanel gameModeButtons = (JPanel) (new RadioButtonsBuilder()).getProduct(this);
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.gridwidth = 3;
         constraints.gridx = 1;
         constraints.gridy = 1;
         this.modeSelection.add(gameModeButtons, constraints);
         
         // create IP text field and instructions
+        JLabel IPLabel = new JLabel();
+        IPLabel.setName("label10");
+        IPLabel.setBackground(new Color (204, 204, 204));
+        IPLabel.setForeground(Color.black);
+        IPLabel.setText("IP address:  ");
         JPanel IPAddressComponents = (JPanel) (new IPFieldBuilder()).getProduct(this);
         constraints.gridx = 2;
         constraints.gridy = 2;
         this.modeSelection.add(IPAddressComponents, constraints);
         
+        
+
+        // make game options screen
+        this.gameOptions.setLayout(new java.awt.GridBagLayout());
+        
+        // create player info input fields
+        JPanel playerInputFields = (JPanel) (new PlayersInfoBuilder()).getProduct(this);
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        this.gameOptions.add(playerInputFields, constraints);
+        
+        // create time options
+        JPanel timeBasedOptions = (JPanel) (new TimeSettingsBuilder()).getProduct(this);
+        constraints.gridx = 1;
+        constraints.gridy = 2;
+        this.gameOptions.add(timeBasedOptions, constraints);
+        
+        
         // create OK/Cancel buttons
         JPanel OKCancelButtons = (JPanel) (new OKCancelBuilder()).getProduct(this);
+        constraints.anchor = GridBagConstraints.CENTER;
         constraints.gridx = 3;
-        constraints.gridy = 3;
-        this.modeSelection.add(OKCancelButtons, constraints);
-        
-        
+        constraints.gridy = 4;
+        this.gameOptions.add(OKCancelButtons, constraints);
         
         // configuration
         this.getContentPane().add(this.modeSelection, BorderLayout.NORTH);
+        this.getContentPane().add(this.gameOptions, BorderLayout.SOUTH);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 exitForm(evt);

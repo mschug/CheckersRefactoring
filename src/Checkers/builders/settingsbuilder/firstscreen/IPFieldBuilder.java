@@ -35,7 +35,7 @@ public class IPFieldBuilder implements Builder {
         IPLabel.setName("label10");
         IPLabel.setBackground(new Color (204, 204, 204));
         IPLabel.setForeground(Color.black);
-        IPLabel.setText("IP address:");
+        IPLabel.setText("IP address:  ");
         constraints.gridx = 0;
         constraints.gridy = 0;
         this.panel.add(IPLabel, constraints);

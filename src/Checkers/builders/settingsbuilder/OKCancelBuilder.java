@@ -1,5 +1,6 @@
-package Checkers.builders;
+package Checkers.builders.settingsbuilder;
 
+import Checkers.builders.Builder;
 import Checkers.builders.Builder;
 import Checkers.settings.Settings;
 import java.awt.Color;
