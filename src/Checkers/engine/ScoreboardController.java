@@ -138,4 +138,15 @@ public class ScoreboardController {
         } catch( IOException io ){}
     }
     
+    /**
+     * Deletes all players from the scoreboard and overwrites the scoreboard file.
+     */
+    public void resetScores(){
+        players.clear();
+        saveFile();
+    }
+
+    public ArrayList<PlayerScore> getScores() {
+        return players;
+    }
 }
