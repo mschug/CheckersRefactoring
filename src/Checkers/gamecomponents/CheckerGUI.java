@@ -240,6 +240,8 @@ public class CheckerGUI extends JFrame implements ActionListener{
         gridBagConstraints1.gridy = 6;
         getContentPane().add(DrawButton, gridBagConstraints1);
 	
+        theFacade.setPlayerModes() ;
+        
     }
     
     /** 

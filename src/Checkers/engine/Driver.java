@@ -14,7 +14,6 @@ package Checkers.engine;
  */
 
 import Checkers.engine.Notifier;
-import Checkers.engine.Facade;
 import Checkers.engine.Timer;
 import Checkers.gamecomponents.network.NetworkPlayer;
 import Checkers.gamecomponents.LocalPlayer;
@@ -46,8 +45,9 @@ public class Driver {
     private Player  passivePlayer;
     private boolean runningTimer;
     private Timer   theTimer;
-    private Facade  theFacade;
     private Rules   theRules;
+    
+    private static int     LOCALGAME, HOSTGAME, CLIENTGAME ;
     
     /**
      * Constructor
@@ -55,10 +55,16 @@ public class Driver {
      * Create the driver, which in turn creates the rest of 
      * the system.
      * @param board - The board to be passed on to rules.
+     * @param local - Value for a local game - refactored from facade.
+     * @param host  - Value for a host game - refactored from facade.
+     * @param client- Value for a client game - refactored from facade.
      */
-    public Driver(Board board){
+    public Driver(Board board, int local, int host, int client){
 	// Create the rules passing in the board
 	theRules = new Rules( board, this );
+        LOCALGAME = local ;
+        HOSTGAME = host ;
+        CLIENTGAME = client ;
     }
     
     /**
@@ -93,20 +99,18 @@ public class Driver {
        		       " another jump", "Multiple Jump Possible",
 		       JOptionPane.INFORMATION_MESSAGE );
 		
-		// Get the GUI to update
-		theFacade.setPlayerModes( activePlayer, passivePlayer );
 		
 		// If game is networked tell networked player to send 
 		// the move
-		if ( gameType == theFacade.HOSTGAME 
-		     || gameType == theFacade.CLIENTGAME ) {
+		if ( gameType == HOSTGAME 
+		     || gameType == CLIENTGAME ) {
 		    ( (NetworkPlayer) activePlayer ).sendMove();
 		}
 	    }
 	} else if ( passivePlayer == player ) {
 	    // If game is networked, tell networked player to send move
-	    if ( gameType == theFacade.HOSTGAME 
-		 || gameType == theFacade.CLIENTGAME ) {
+	    if ( gameType == HOSTGAME 
+		 || gameType == CLIENTGAME ) {
 		((NetworkPlayer)activePlayer).sendMove();
 		((NetworkPlayer)activePlayer).waitForPlayer();
 	    }
@@ -119,7 +123,6 @@ public class Driver {
 	    activePlayer    = passivePlayer;
 	    passivePlayer   = tempHold;
 	    
-	    theFacade.setPlayerModes( activePlayer, passivePlayer );
 	}
 	
     }
@@ -262,7 +265,7 @@ public class Driver {
      * @param player The player declining the draw.
      */
     public void declineDraw( Player player ){
-	if ( gameType == theFacade.LOCALGAME ) {
+	if ( gameType == LOCALGAME ) {
 	    player.endInDeclineDraw( player );
 	} else {
 	    playerOne.endInDeclineDraw( player );
@@ -343,10 +346,10 @@ public class Driver {
     public void startGame(){
 	selectColors();
        
-	if ( gameType == theFacade.HOSTGAME ) {
+	if ( gameType == HOSTGAME ) {
 	    ( (NetworkPlayer)playerTwo).waitForConnect();
 	    //( (NetworkPlayer)playerTwo).waitForConnect();
-	} else if ( gameType == theFacade.CLIENTGAME ) {
+	} else if ( gameType == CLIENTGAME ) {
 	    //( (NetworkPlayer)playerOne).connectToHost();
 	    ( (NetworkPlayer)playerOne).connectToHost();
 	}
@@ -360,7 +363,6 @@ public class Driver {
 	    passivePlayer = playerOne;
 	}
 	
-	theFacade.setPlayerModes( activePlayer, passivePlayer );
     }
     
     /**
@@ -391,6 +393,15 @@ public class Driver {
     public Player getOppositePlayer(){
    	// Returns the player whos getTurnStatus is false
    	return passivePlayer;
+    }
+    
+    /**
+     * Return the player who is on their turn
+     * 
+     * @return the player whose turn it is
+     */
+    public Player getCurrentPlayer(){
+        return activePlayer ;
     }
     
     /**
@@ -457,10 +468,10 @@ public class Driver {
     }
     
     /* Refactored method, orginially in Facade.
-     * 
+     * Returns the timer object.
      */
-    public int getTimer(){
-        return this.theTimer.getTimer() ;
+    public Timer getTimer(){
+        return this.theTimer ;
     }
     
 }//Driver.java

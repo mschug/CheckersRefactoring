@@ -94,7 +94,11 @@ public class Timer extends Thread{
 	return retval;
     }
     
-    public int getTimer(){
+    /**
+     * 
+     * @return the amount of time each player has for a turn 
+     */
+    public int getTimerValue(){
         int retval = 0;
 
 	// Makes sure there is a timer for this game

@@ -58,7 +58,7 @@ public class Facade extends Component {
 	//theBoard = newBoard;
 	//theDriver = newDriver;
         this.theBoard = new Board() ;
-	this.theDriver = new Driver(this.theBoard) ;
+	this.theDriver = new Driver(this.theBoard, LOCALGAME, HOSTGAME, CLIENTGAME) ;
     }
     
     /**
@@ -79,13 +79,11 @@ public class Facade extends Component {
     /**
      * Set which players turn it is.
      * 
-     * @param active  The active player
-     * @param passive The passive player
      */
-    public void setPlayerModes( Player active, Player passive ){
+    public void setPlayerModes(){
 	
-	activePlayer = active;
-	passivePlayer = passive;
+	activePlayer = theDriver.getCurrentPlayer() ;
+	passivePlayer = theDriver.getOppositePlayer() ;
 	
 	// Tell GUI to update
 	generateActionPerformed( update );
@@ -147,6 +145,8 @@ public class Facade extends Component {
 	// Reset startSpace and endSpace to 99
 	startSpace = 99;
 	endSpace   = 99;
+        
+        generateActionPerformed(update) ;
 	
     }
     
@@ -288,9 +288,11 @@ public class Facade extends Component {
      * 
      * @pre there has been a timer set for the current game
      * 
+     * This can be confusing.  The driver returns the timer OBJECT which is
+     * then used to return the value using the Timer's get method.
      */
     public int getTimer(){
-	return this.theDriver.getTimer() ;
+	return this.theDriver.getTimer().getTimerValue() ;
     }
     
     /**
