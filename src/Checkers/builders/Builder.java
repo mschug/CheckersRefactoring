@@ -1,5 +1,6 @@
 package Checkers.builders;
 
+import Checkers.settings.Settings;
 import javax.swing.JFrame;
 
 /**
@@ -8,5 +9,5 @@ import javax.swing.JFrame;
  * @author thn1069
  */
 public interface Builder {
-    public void build(JFrame settingsscreen);
+    public void build(Settings settingsscreen);
 }
